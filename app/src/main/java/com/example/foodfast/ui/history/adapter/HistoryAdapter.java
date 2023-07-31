@@ -41,26 +41,25 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.VH> {
         ItemOrderAdapter adapter = new ItemOrderAdapter(context, history, listFood);
         holder.binding.address.setText(history.getAddress());
         holder.binding.createAt.setText(Utils.convertDateType1(history.getCreateAt()));
-        holder.binding.recyclerView.setAdapter(adapter);
         holder.binding.updateAt.setText(Utils.convertDateType1(history.getUpdateAt()));
         holder.binding.total.setText(String.format("Tổng tiền: $ %s", Utils.convertMoney(history.getTotal())));
+        holder.binding.recyclerView.setAdapter(adapter);
+
         switch (history.getStatus()) {
-            //Chờ xác nhận
             case 0: {
-                holder.binding.layoutTime.setVisibility(View.GONE);
-                holder.binding.status.setText(R.string.waiting_confirm);
-                holder.binding.status.setBackgroundResource(R.drawable.bg_waiting_confirm);
-                break;
-            }
-            //Đã xác nhận
-            case 1: {
                 holder.binding.updateAtTitle.setText(R.string.time_comfirm);
                 holder.binding.layoutTime.setVisibility(View.VISIBLE);
                 holder.binding.status.setText(R.string.confirmed);
                 holder.binding.status.setBackgroundResource(R.drawable.bg_confirmed);
                 break;
             }
-            //Đã giao đơn
+            case 1: {
+                holder.binding.layoutTime.setVisibility(View.GONE);
+                holder.binding.status.setText(R.string.waiting_confirm);
+                holder.binding.status.setBackgroundResource(R.drawable.bg_waiting_confirm);
+                break;
+
+            }
             case 2: {
                 holder.binding.updateAtTitle.setText(R.string.time_deliver);
                 holder.binding.layoutTime.setVisibility(View.VISIBLE);
@@ -86,15 +85,17 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.VH> {
         holder.binding.hide.setVisibility(View.GONE);
         holder.binding.recyclerView.setVisibility(View.GONE);
 
-        holder.binding.hide.setOnClickListener(v -> {
-            holder.binding.hide.setVisibility(View.GONE);
-            holder.binding.recyclerView.setVisibility(View.GONE);
-            holder.binding.show.setVisibility(View.VISIBLE);
-        });
+
         holder.binding.show.setOnClickListener(v -> {
             holder.binding.hide.setVisibility(View.VISIBLE);
             holder.binding.recyclerView.setVisibility(View.VISIBLE);
             holder.binding.show.setVisibility(View.GONE);
+
+        });
+        holder.binding.hide.setOnClickListener(v -> {
+            holder.binding.hide.setVisibility(View.GONE);
+            holder.binding.recyclerView.setVisibility(View.GONE);
+            holder.binding.show.setVisibility(View.VISIBLE);
         });
     }
 

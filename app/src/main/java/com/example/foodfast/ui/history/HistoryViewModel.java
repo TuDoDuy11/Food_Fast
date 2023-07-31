@@ -28,6 +28,7 @@ public class HistoryViewModel extends ViewModel {
         state.setValue(AsyncState.UNINITIALIZED);
     }
     public void all(Context context) {
+
         SessionManager sessionManager = new SessionManager(context);
         String id = sessionManager.fetchId();
         if(id != null){
@@ -43,6 +44,7 @@ public class HistoryViewModel extends ViewModel {
                             history.setId(snapshot.getKey());
                             histories.add(history);
                         }
+
                         Collections.reverse(histories);
                         listHistory.setValue(histories);
                         state.setValue(AsyncState.SUCCESS);

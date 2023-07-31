@@ -43,6 +43,7 @@ public class HistoryFragment extends Fragment {
     }
 
     private void initUiAndData() {
+
         binding.empty.setVisibility(View.VISIBLE);
         adapter = new HistoryAdapter(getContext(), listCart, listFood);
         binding.recyclerView.setAdapter(adapter);
@@ -52,11 +53,11 @@ public class HistoryFragment extends Fragment {
             listFood.addAll(foods);
         });
         viewModel.listHistory.observe(getViewLifecycleOwner(), carts -> {
+
             listCart.clear();
-            if(carts != null){
+            if (carts != null){
                 listCart.addAll(carts);
-            }
-            if (listCart.isEmpty()){
+            }if(listCart.isEmpty()){
                 binding.empty.setVisibility(View.VISIBLE);
             }else {
                 binding.empty.setVisibility(View.GONE);

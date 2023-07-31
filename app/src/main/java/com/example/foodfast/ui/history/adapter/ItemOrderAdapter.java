@@ -42,7 +42,8 @@ public class ItemOrderAdapter extends RecyclerView.Adapter<ItemOrderAdapter.VH> 
         CartItem item = cart.getCartItems().get(position);
         Food food = null;
         for (int i = 0; i < listFood.size(); i++) {
-            if (listFood.get(i).getId().equals(item.getIdFood())) {
+
+            if (listFood.get(i).getId().equals(item.getIdFood())){
                 food = listFood.get(i);
                 break;
             }
