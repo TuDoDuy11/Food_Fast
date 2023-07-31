@@ -79,6 +79,7 @@ public class CartFragment extends Fragment {
                             binding.feeShip.setText("0 $");
                             binding.discount.setText("0 $");
                             binding.subTotal.setText("0 $");
+
                         }else {
                             binding.recyclerView.setVisibility(View.VISIBLE);
                             binding.empty.setVisibility(View.GONE);
