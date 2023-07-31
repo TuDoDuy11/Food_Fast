@@ -56,6 +56,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.VH>{
             }
         }
         if (food != null){
+
             Glide.with(context).load(food.getUrlImage()).into(holder.binding.image);
             holder.binding.amount.setText(String.format("%s",item.getAmountBuy()));
             holder.binding.name.setText(food.getTitle());
@@ -64,7 +65,14 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.VH>{
                 if (item.getAmountBuy()>1){
                     item.minus();
                     clickItem.edit(cart,position);
-                }else {
+                }
+            });
+            holder.binding.btnPlus.setOnClickListener(v -> {
+                    item.plus();
+                    clickItem.edit(cart,position);
+            });
+            holder.binding.btnxoa.setOnClickListener(v -> {
+
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
                     builder.setTitle("Delete");
                     builder.setMessage("Bạn có chắc chắn muốn xóa món ăn?");
@@ -73,11 +81,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.VH>{
                         clickItem.edit(cart,position);
                         dialog.dismiss();
                     }).setNegativeButton("Hủy bỏ", (dialog, which) -> dialog.dismiss()).create().show();
-                }
-            });
-            holder.binding.btnPlus.setOnClickListener(v -> {
-                    item.plus();
-                    clickItem.edit(cart,position);
+
             });
         }
     }

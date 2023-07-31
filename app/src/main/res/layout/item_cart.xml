@@ -61,6 +61,7 @@
                 android:text="$ 20.000" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
+
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/btn_minus"
             android:layout_width="wrap_content"
@@ -76,6 +77,7 @@
             style="@style/font_16_black_medium"
             android:text="1" />
 
+
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/btn_plus"
             android:layout_width="wrap_content"
@@ -83,5 +85,13 @@
             android:layout_marginEnd="10dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_plus" />
+        <TextView
+            android:id="@+id/btnxoa"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Xóa"/>
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.cardview.widget.CardView>

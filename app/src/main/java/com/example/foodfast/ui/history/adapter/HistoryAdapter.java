@@ -68,6 +68,20 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.VH> {
                 holder.binding.status.setBackgroundResource(R.drawable.bg_delivered);
                 break;
             }
+            case 3: {
+                holder.binding.updateAtTitle.setText(R.string.dahuy);
+                holder.binding.layoutTime.setVisibility(View.VISIBLE);
+                holder.binding.status.setText(R.string.dahuy);
+                holder.binding.status.setBackgroundResource(R.drawable.bg_delivered);
+                break;
+            }
+            case 4: {
+                holder.binding.updateAtTitle.setText(R.string.danggiao);
+                holder.binding.layoutTime.setVisibility(View.VISIBLE);
+                holder.binding.status.setText(R.string.danggiao);
+                holder.binding.status.setBackgroundResource(R.drawable.bg_confirmed);
+                break;
+            }
         }
         holder.binding.hide.setVisibility(View.GONE);
         holder.binding.recyclerView.setVisibility(View.GONE);

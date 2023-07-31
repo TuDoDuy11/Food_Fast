@@ -40,6 +40,8 @@
     <string name="waiting_confirm">Chờ xác nhận</string>
     <string name="confirmed">Đã xác nhận</string>
     <string name="delivered">Đã giao đơn</string>
+    <string name="dahuy">Đã hủy</string>
+    <string name="danggiao">Đang giao</string>
     <string name="time_comfirm">Thời gian xác nhận</string>
     <string name="time_deliver">Thời gian nhận đơn</string>
     <string name="list_order">Các đơn hàng đã đặt</string>
