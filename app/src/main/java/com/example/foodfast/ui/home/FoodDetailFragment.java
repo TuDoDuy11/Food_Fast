@@ -56,8 +56,9 @@ public class FoodDetailFragment extends Fragment {
 
         viewModel.cart.observe(getViewLifecycleOwner(),cart1 -> cart = cart1);
 
-        viewModel.foodDetail.observe(getViewLifecycleOwner(), food -> {
-            if (food.getTitle() != null) {
+
+        viewModel.foodDetail.observe(getViewLifecycleOwner(),food -> {
+            if (food.getTitle() != null){
                 binding.title.setText(food.getTitle());
                 binding.describe.setText(food.getDescription());
                 int price = food.getPrice() * (100 - food.getDiscount()) / 100;
@@ -67,7 +68,6 @@ public class FoodDetailFragment extends Fragment {
                 cartItem = new CartItem(food.getId(),0, food.getPrice()*(100- food.getDiscount())/100 );
             }
         });
-
         binding.btnBack.setOnClickListener(v -> requireActivity().onBackPressed());
 
         binding.btnMinus.setOnClickListener(v -> {
@@ -79,7 +79,8 @@ public class FoodDetailFragment extends Fragment {
         binding.btnPlus.setOnClickListener(v -> binding.amount.setText(++amount + ""));
         binding.btnAdd.setOnClickListener(v -> {
             String id2 = sessionManager.fetchId();
-            if(id2 == null){
+
+            if (id2 == null){
                 startActivity(new Intent(getContext(), SecurityActivity.class));
             }
             if(cart != null){

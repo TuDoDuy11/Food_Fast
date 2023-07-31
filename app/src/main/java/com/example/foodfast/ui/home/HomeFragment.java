@@ -57,12 +57,12 @@ public class HomeFragment extends Fragment {
 
     private void initUiAndData() {
         //Slide show
-        List<SlideModel> imageList = new ArrayList<>() ;// Create image list
+
+        List<SlideModel> imageList = new ArrayList<>();
         imageList.add(new SlideModel(R.drawable.banner_1, ScaleTypes.CENTER_CROP));
         imageList.add(new SlideModel(R.drawable.banner_2, ScaleTypes.CENTER_CROP));
         imageList.add(new SlideModel(R.drawable.banner_3, ScaleTypes.CENTER_CROP));
         binding.imageSlider.setImageList(imageList);
-
         viewModel.allCategory();
         List<Category> listCategory = new ArrayList<>();
         CategoryAdapter categoryAdapter = new CategoryAdapter(getContext(),listCategory,category -> {
@@ -105,20 +105,21 @@ public class HomeFragment extends Fragment {
             String id = new SessionManager(getContext()).fetchId();
             if(id != null ){
                 Intent intent = new Intent(getContext(), InformationActivity.class);
-                intent.putExtra(ID,id);
+                intent.putExtra(ID, id);
                 startActivity(intent);
             }else {
                 //Login
-                startActivity(new Intent(getContext(),SecurityActivity.class));
+                startActivity(new Intent(getContext(), SecurityActivity.class));
             }
 
         });
 
         binding.searchLayout.setStartIconOnClickListener(v -> {
+
             String keyWord = binding.search.getText().toString();
-            if (!keyWord.isEmpty()) {
+            if (!keyWord.isEmpty()){
                 viewModel.searchFood(getContext(), keyWord);
-            } else {
+            }else {
                 viewModel.all();
             }
         });

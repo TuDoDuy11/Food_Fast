@@ -38,15 +38,17 @@ public class DashboardFragment extends Fragment {
         viewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        binding.urlImage.setOnClickListener(view ->  pickImage());
+
+        binding.urlImage.setOnClickListener(view -> pickImage());
         binding.btnSubmit.setOnClickListener(view -> submit());
         viewModel.state.observe(getViewLifecycleOwner(), asyncState -> {
             switch (asyncState) {
                 case LOADING: {
                     Toast.makeText(getContext(), "Đang thêm", Toast.LENGTH_SHORT).show();
                 }
-                case SUCCESS: {
-                    Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+
+                case SUCCESS:{
+                    Toast.makeText(getContext(),"Thêm thành công", Toast.LENGTH_SHORT).show();
                     viewModel.state.setValue(AsyncState.UNINITIALIZED);
                 }
             }
@@ -102,6 +104,7 @@ public class DashboardFragment extends Fragment {
     }
 
     private void sumitAccount() {
+
         String username = binding.username.getText().toString();
         String password = binding.password.getText().toString();
         String firstname = binding.fistname.getText().toString();
