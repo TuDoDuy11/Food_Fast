@@ -47,18 +47,17 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.VH> {
 
         switch (history.getStatus()) {
             case 0: {
+                holder.binding.layoutTime.setVisibility(View.GONE);
+                holder.binding.status.setText(R.string.waiting_confirm);
+                holder.binding.status.setBackgroundResource(R.drawable.bg_waiting_confirm);
+                break;
+            }
+            case 1: {
                 holder.binding.updateAtTitle.setText(R.string.time_comfirm);
                 holder.binding.layoutTime.setVisibility(View.VISIBLE);
                 holder.binding.status.setText(R.string.confirmed);
                 holder.binding.status.setBackgroundResource(R.drawable.bg_confirmed);
                 break;
-            }
-            case 1: {
-                holder.binding.layoutTime.setVisibility(View.GONE);
-                holder.binding.status.setText(R.string.waiting_confirm);
-                holder.binding.status.setBackgroundResource(R.drawable.bg_waiting_confirm);
-                break;
-
             }
             case 2: {
                 holder.binding.updateAtTitle.setText(R.string.time_deliver);

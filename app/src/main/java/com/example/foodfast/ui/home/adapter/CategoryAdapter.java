@@ -38,11 +38,14 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.VH> {
 
     @Override
     public void onBindViewHolder(@NonNull VH holder, int position) {
+//        list.get(position).setSelected(position == posSelected);
+//        holder.bindData(list.get(position), context);
+//        holder.itemView.setOnClickListener(v -> {
+//
         list.get(position).setSelected(position == posSelected);
-        holder.bindData(list.get(position), context);
+        holder.bindData(list.get(position),context);
         holder.itemView.setOnClickListener(v -> {
             posSelected = holder.getAdapterPosition();
-            //send event click out handle
             iclick.iClick(list.get(holder.getAdapterPosition()));
             this.notifyDataSetChanged();
         });
@@ -63,6 +66,13 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.VH> {
 
         public void bindData(Category category, Context context) {
             Glide.with(context).load(category.getImageUrl()).into(binding.img);
+//            binding.name.setText(category.getName());
+//            binding.nameSelected.setText(category.getName());
+//            if (category.isSelected()) {
+//                binding.name.setVisibility(View.GONE);
+//                binding.nameSelected.setVisibility(View.VISIBLE);
+//                binding.layoutItem.setBackgroundResource(R.drawable.bg_category_selected);
+//            }
             binding.name.setText(category.getName());
             binding.nameSelected.setText(category.getName());
             if (category.isSelected()) {

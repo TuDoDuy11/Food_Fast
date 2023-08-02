@@ -26,6 +26,8 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.VH> {
     private final IclickDetail clickItem;
 
     public FoodAdapter(Context context, List<Food> listFood, IclickDetail clickItem) {
+//        this.context = context;
+//
         this.context = context;
         this.clickItem = clickItem;
         this.listFood = listFood;
@@ -40,6 +42,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.VH> {
 
     @Override
     public void onBindViewHolder(@NonNull VH holder, int position) {
+
         holder.bindFood(listFood.get(position), clickItem, context);
         holder.itemView.setOnClickListener(v -> clickItem.detailFood(listFood.get(position)));
     }
@@ -64,9 +67,12 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.VH> {
             binding.title.setText(food.getTitle());
             binding.ingredient.setText(food.getIngredient());
             Glide.with(context).load(food.getUrlImage()).into(binding.image);
-            if (food.getDiscount() > 0)
-                binding.discount.setText("Giảm "+food.getDiscount() + "%");
-            else {
+//            if (food.getDiscount() > 0)
+//                binding.discount.setText("Giảm "+food.getDiscount() + "%");
+//
+            if (food.getDiscount() > 0){
+                binding.discount.setText("Giảm "+ food.getDiscount() + "%");
+            }else {
                 binding.discount.setBackgroundResource(R.color.white);
                 binding.price.setText("");
             }
